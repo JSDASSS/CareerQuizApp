@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Career Compass</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/BTC.png') }}" alt="BTC Logo">
+    </header>
+
+    <main>
+        <h1>Find Your Non-Clinical Career Path!</h1>
+        <form action="/submit" method="POST">
+            {% for question in questions %}
+                <div class="question">
+                    <p>{{ question['question'] }}</p>
+                    {% for key, value in question['answers'].items() %}
+                        <label>
+                            <input type="radio" name="{{ question['id'] }}" value="{{ key }}" required>
+                            {{ value }}
+                        </label><br>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BTC </p>
+    </footer>
+</body>
+</html>
