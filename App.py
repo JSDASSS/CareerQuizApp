@@ -15,7 +15,8 @@ def submit():
 
     # Calculate the score based on user answers
     for question_id, answer in answers.items():
-        score[answer] += 1  # Increment the corresponding score for each answer
+        if answer in score:
+            score[answer] += 1  # Increment the corresponding score for each answer
 
     # Determine MBTI type from scores
     mbti = (
